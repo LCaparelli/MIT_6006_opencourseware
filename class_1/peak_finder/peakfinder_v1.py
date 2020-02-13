@@ -32,10 +32,7 @@ def peak_finder(array):
 
 
 def is_valid_idx(idx, array):
-    if 0 <= idx < len(array):
-        return True
-    else:
-        return False
+    return True if 0 <= idx < len(array) else False
 
 
 if __name__ == '__main__':
