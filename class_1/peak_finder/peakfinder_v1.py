@@ -13,6 +13,7 @@ On the other hand the following is valid:
 
 [0, 1, 2, 1, 1, 0, -1, -2]
 
+With this constraint and definition of peak there is always at least one peak.
 """
 
 
