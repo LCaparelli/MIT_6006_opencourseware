@@ -20,7 +20,7 @@ def larger_neighbor(i, j, matrix, largest_neighbor):
 
 
 def is_valid_pos(i, j, matrix):
-    return True if 0 <= i < len(matrix) and 0 <= j < len(matrix[i]) else False
+    return 0 <= i < len(matrix) and 0 <= j < len(matrix[i])
 
 
 def greedy_ascent(i, j, matrix):

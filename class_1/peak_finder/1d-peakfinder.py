@@ -44,7 +44,7 @@ def peak_finder_divide_n_conquer(idx, array):
 
 
 def is_valid_idx(idx, array):
-    return True if 0 <= idx < len(array) else False
+    return 0 <= idx < len(array)
 
 
 if __name__ == '__main__':
