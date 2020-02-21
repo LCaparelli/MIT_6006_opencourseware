@@ -1,6 +1,16 @@
 """
 Given a 2-dimensional array of integers, find a peak.
 
+Each row is organized such that once the numbers start decreasing they cannot increase again. For example,
+the following row is not valid because the values start decreasing at position 3, but then there is an increase in
+position 5:
+
+[0, 1, 2, 1, 1, 2, 1, 0]
+
+On the other hand the following is valid:
+
+[0, 1, 2, 1, 1, 0, -1, -2]
+
 Position [i][j] is a peak if and only if:
 
   - array[i-1][j] <= array[i][j]
@@ -23,6 +33,7 @@ def is_valid_pos(i, j, matrix):
     return 0 <= i < len(matrix) and 0 <= j < len(matrix[i])
 
 
+# O(n)
 def greedy_ascent(i, j, matrix):
     largest_neighbor_pos = (-1, -1)
     largest_neighbor = float('-inf')
