@@ -58,6 +58,28 @@ def greedy_ascent(i, j, matrix):
         return i, j
 
 
+def get_max_value_idx(col, matrix):
+    largest = matrix[0][col]
+    largest_idx = 0
+    for row in range(1, len(matrix)):
+        if matrix[row][col] > largest:
+            largest = matrix[row][col]
+            largest_idx = row
+
+    return largest_idx
+
+
+def divide_n_conquer(col, matrix):
+    row = get_max_value_idx(col, matrix)
+
+    if is_valid_pos(row, col - 1, matrix) and matrix[row][col - 1] > matrix[row][col]:
+        return divide_n_conquer(int((col - 1) / 2), matrix)
+    elif is_valid_pos(row, col + 1, matrix) and matrix[row][col + 1] > matrix[row][col]:
+        return divide_n_conquer(int((col + 1 + len(matrix[row])) / 2), matrix)
+    else:
+        return row, col
+
+
 if __name__ == '__main__':
     print("\nExpected: " + str((2, 2)))
     matrix = [
@@ -66,6 +88,7 @@ if __name__ == '__main__':
         [7, 8, 9]
     ]
     print("Greedy ascent: " + str(greedy_ascent(0, 0, matrix)))
+    print("Divide and conquer: " + str(divide_n_conquer(int(len(matrix) / 2), matrix)))
 
     print("\nExpected: " + str((2, 1)))
     matrix = [
@@ -74,6 +97,7 @@ if __name__ == '__main__':
         [7, 8, 7]
     ]
     print("Greedy ascent: " + str(greedy_ascent(0, 0, matrix)))
+    print("Divide and conquer: " + str(divide_n_conquer(int(len(matrix) / 2), matrix)))
 
     print("\nExpected: " + str((1, 1)))
     matrix = [
@@ -82,9 +106,11 @@ if __name__ == '__main__':
         [3, 2, 1]
     ]
     print("Greedy ascent: " + str(greedy_ascent(0, 0, matrix)))
+    print("Divide and conquer: " + str(divide_n_conquer(int(len(matrix) / 2), matrix)))
 
     print("\nExpected: " + str((0, 0)))
     matrix = [
         [1]
     ]
     print("Greedy ascent: " + str(greedy_ascent(0, 0, matrix)))
+    print("Divide and conquer: " + str(divide_n_conquer(int(len(matrix) / 2), matrix)))
